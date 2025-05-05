@@ -1,8 +1,5 @@
-// server/controllers/favoriteController.js
-
 import pool from '../db.js';
 
-// Функция для переключения избранного
 export const toggleFavorite = async (req, res) => {
   const { productId } = req.body;
   const userId = req.userData.userId;
@@ -32,7 +29,6 @@ export const toggleFavorite = async (req, res) => {
   }
 };
 
-// Новая функция для получения избранного
 export const getFavorites = async (req, res) => {
   const userId = req.userData.userId;
   

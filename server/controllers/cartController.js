@@ -1,4 +1,3 @@
-// server/controllers/cartController.js
 import pool from '../db.js';
 
 export const getCart = async (req, res) => {
@@ -35,12 +34,10 @@ export const clearCart = async (req, res) => {
   }
 };
 
-// server/controllers/cartController.js
 export const decrementQuantity = async (req, res) => {
   const { productId } = req.params;
   const userId = req.userData.userId;
 
-  // Добавляем полную валидацию ID
   if (!productId || isNaN(productId)) {
     return res.status(400).json({ 
       message: 'Неверный ID товара',
@@ -54,7 +51,6 @@ export const decrementQuantity = async (req, res) => {
   try {
     await client.query('BEGIN');
 
-    // 1. Проверка существования товара в корзине
     const checkQuery = await client.query(
       `SELECT quantity FROM Cart 
        WHERE user_id = $1 AND product_id = $2 
@@ -70,11 +66,9 @@ export const decrementQuantity = async (req, res) => {
       });
     }
 
-    // 2. Уменьшаем количество и сразу удаляем если нужно
     const currentQuantity = checkQuery.rows[0].quantity;
     
     if (currentQuantity === 1) {
-      // Если количество 1 - сразу удаляем
       await client.query(
         `DELETE FROM Cart 
          WHERE user_id = $1 AND product_id = $2`,
@@ -90,7 +84,6 @@ export const decrementQuantity = async (req, res) => {
         newQuantity: 0
       });
     } else {
-      // Уменьшаем количество
       const updateQuery = await client.query(`
         UPDATE Cart 
         SET quantity = quantity - 1
@@ -126,7 +119,6 @@ export const addToCart = async (req, res) => {
   const { productId } = req.body;
   
   try {
-    // Добавляем проверку существования товара
     const productCheck = await pool.query(
       'SELECT id FROM products WHERE id = $1',
       [productId]

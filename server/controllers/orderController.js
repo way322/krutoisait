@@ -1,4 +1,3 @@
-// server/controllers/orderController.js
 import pool from '../db.js'; 
 
 
@@ -9,7 +8,7 @@ export const createOrder = async (req, res) => {
 
     const { items, address, name, total } = req.body;
     const userId = req.userData.userId;
-    const deliveryDate = new Date(Date.now() + 21600000); // +6 часов
+    const deliveryDate = new Date(Date.now() + 21600000); 
 
     setTimeout(async () => {
       try {
@@ -18,19 +17,16 @@ export const createOrder = async (req, res) => {
       } catch (err) {
         console.error('Auto-delete error:', err);
       }
-    }, 21600000); // 6 часов
-
+    }, 21600000); 
 
     if (!req.userData?.userId) {
       return res.status(401).json({ message: 'Пользователь не авторизован' });
     }
 
-    // Валидация данных
     if (!items || !Array.isArray(items) || items.length === 0) {
       return res.status(400).json({ message: 'Нет товаров в заказе' });
     }
 
-    // Добавьте проверку наличия товаров в базе
     const productsCheck = await client.query(
       'SELECT id, price FROM products WHERE id = ANY($1::int[])',
       [items.map(i => i.id)]
@@ -42,7 +38,6 @@ export const createOrder = async (req, res) => {
       });
     }
 
-    // Добавьте проверку общей суммы
     const calculatedTotal = items.reduce((sum, item) => {
       const product = productsCheck.rows.find(p => p.id === item.id);
       return sum + (product.price * item.quantity);
@@ -54,7 +49,6 @@ export const createOrder = async (req, res) => {
       });
     }
 
-    // Создание заказа
     const orderResult = await client.query(
       `INSERT INTO Orders (user_id, address, name, delivery_date, total)
        VALUES ($1, $2, $3, $4, $5)
@@ -62,7 +56,6 @@ export const createOrder = async (req, res) => {
       [userId, address, name, deliveryDate, total]
     );
 
-    // Добавление товаров
     for (const item of items) {
       await client.query(
         `INSERT INTO Order_items (order_id, product_id, quantity)
@@ -71,13 +64,11 @@ export const createOrder = async (req, res) => {
       );
     }
 
-    // Очистка корзины
     await client.query(
       'DELETE FROM Cart WHERE user_id = $1',
       [userId]
     );
 
-    // Получение данных товаров
     const orderItemsResult = await client.query(
       `SELECT p.id, p.title, p.price, p.image_url, oi.quantity 
        FROM Order_items oi
@@ -107,7 +98,6 @@ export const createOrder = async (req, res) => {
 
 export const getOrders = async (req, res) => {
   try {
-// server/controllers/orderController.js
 const { rows } = await pool.query(
   `SELECT 
     o.id,
@@ -133,8 +123,7 @@ const { rows } = await pool.query(
    ORDER BY o.created_at DESC`,
   [req.userData.userId]
 );
-    
-    // Преобразование дат в ISO строки
+
     const formatted = rows.map(order => ({
       ...order,
       created_at: order.created_at.toISOString(),

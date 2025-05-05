@@ -1,5 +1,3 @@
-// server/controllers/productController.js
-
 import pool from '../db.js';
 
 export const getProducts = async (req, res) => {

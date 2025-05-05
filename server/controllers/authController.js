@@ -1,5 +1,3 @@
-// server/controllers/authController.js
-
 import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -17,11 +15,9 @@ export const login = async (req, res) => {
     console.log('[LOGIN] Запрос:', req.body);
     let { phone, password } = req.body;
     
-    // Нормализация номера
     phone = normalizePhone(phone);
     console.log('[LOGIN] Нормализованный номер:', phone);
 
-    // Поиск пользователя
     const user = await User.findByPhone(phone);
     console.log('[LOGIN] Найден пользователь:', user);
     if (!user) {
@@ -36,7 +32,6 @@ export const login = async (req, res) => {
       return res.status(401).json({ message: 'Неверные учетные данные' });
     }
 
-    // Генерация токена
     const token = jwt.sign(
       { userId: user.id },
       process.env.JWT_SECRET,
@@ -65,7 +60,6 @@ export const register = async (req, res) => {
   try {
     let { phone, password, confirmPassword } = req.body;
 
-    // Валидация пароля
     if (password !== confirmPassword) {
       return res.status(400).json({ message: 'Пароли не совпадают' });
     }
@@ -73,27 +67,22 @@ export const register = async (req, res) => {
       return res.status(400).json({ message: 'Пароль должен быть не менее 8 символов' });
     }
 
-    // Нормализация номера
     phone = normalizePhone(phone);
     console.log('[REGISTER] Нормализованный номер:', phone);
 
-    // Проверка существующего пользователя
     const existingUser = await User.findByPhone(phone);
     if (existingUser) {
       return res.status(400).json({ message: 'Пользователь уже существует' });
     }
 
-    // Хеширование пароля
     const hashedPassword = await bcrypt.hash(password, 12);
     console.log('[REGISTER] Хеш пароля:', hashedPassword.slice(0, 12) + '...');
 
-    // Создание пользователя
     const newUser = await User.create({
       phone_number: phone,
       password: hashedPassword
     });
 
-    // Генерация токена
     const token = jwt.sign(
       { userId: newUser.id },
       process.env.JWT_SECRET,
