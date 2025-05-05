@@ -1,5 +1,3 @@
-// src/Rgister/Register.jsx
-
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -45,7 +43,7 @@ const Register = () => {
     }
 
     try {
-      dispatch(registerStart()); // Теперь действие определено
+      dispatch(registerStart()); 
       const cleanedPhone = formData.phone.replace(/\D/g, '');
       const response = await axios.post('http://localhost:5000/api/auth/register', {
         phone: cleanedPhone,
@@ -61,7 +59,6 @@ const Register = () => {
       localStorage.setItem('token', response.data.token);
       navigate('/profile');
     } catch (err) {
-      // Используем действие registerFailure из импорта
       dispatch(registerFailure(err.response?.data?.message || 'Ошибка регистрации'));
       setError(err.response?.data?.message || 'Ошибка при регистрации');
     }

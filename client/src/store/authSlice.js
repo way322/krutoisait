@@ -1,4 +1,3 @@
-// src/store/authSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import { clearCartDB } from './cartSlice';
 

@@ -1,4 +1,3 @@
-// server/routes/order.js
 import { Router } from 'express';
 import { createOrder } from '../controllers/orderController.js';
 import authMiddleware from '../middleware/auth.js';

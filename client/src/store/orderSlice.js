@@ -1,4 +1,3 @@
-// src/store/orderSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -37,11 +36,10 @@ const orderSlice = createSlice({
       .addCase(fetchOrders.fulfilled, (state, action) => {
         state.status = 'succeeded';
         
-        // Добавляем index как второй параметр в map
         const orders = action.payload
           .map((order, index) => ({
             id: order.id,
-            orderNumber: action.payload.length - index, // Теперь index доступен
+            orderNumber: action.payload.length - index, 
             userId: order.user_id,
             address: order.address,
             name: order.name,

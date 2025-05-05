@@ -1,4 +1,3 @@
-// src/routes/Cart/Cart.jsx
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -31,7 +30,6 @@ const Cart = () => {
     dispatch(addToCartDB(item));
   };
 
-  // src/routes/Cart/Cart.jsx (изменения)
   const handleDecrement = (item) => {
     if (!isAuthenticated) {
       alert('Пожалуйста, авторизуйтесь!');

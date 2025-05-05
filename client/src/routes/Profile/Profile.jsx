@@ -1,4 +1,3 @@
-// src/routes/Profile/Profile.jsx
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -102,10 +101,9 @@ const Profile = () => {
       </header>
   
       <div className={p.mainContent}>
-        {/* Секция заказов */}
         <div className={p.section}>
           <h2 className={p.sectionTitle}>Заказы</h2>
-          <div className={p.ordersContainer}> {/* Новая обертка */}
+          <div className={p.ordersContainer}> 
           {ordersStatus === 'loading' ? (
             <div className={p.loading}>Загрузка заказов...</div>
           ) : ordersError ? (
@@ -154,8 +152,7 @@ const Profile = () => {
           )}
           </div>
         </div>
-  
-        {/* Секция избранного */}
+
         <div className={p.section2}>
           <h2 className={p.sectionTitle}>Избранное</h2>
           {favoriteProducts.length === 0 ? (
@@ -193,7 +190,6 @@ const Profile = () => {
           )}
         </div>
   
-        {/* Секция личных данных */}
         <div className={p.section3}>
           <h2 className={p.sectionTitle}>Личные данные</h2>
           <div className={p.profileInfo}>

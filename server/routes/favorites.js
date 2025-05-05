@@ -1,4 +1,3 @@
-// server/routes/favorites.js
 import { Router } from 'express';
 import { toggleFavorite, getFavorites } from '../controllers/favoriteController.js';
 import authMiddleware from '../middleware/auth.js';

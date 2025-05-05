@@ -1,5 +1,3 @@
-// src/routes/Root/Root.jsx
-
 import { Outlet } from "react-router-dom";
 
 const Root = () => (

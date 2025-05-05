@@ -1,4 +1,3 @@
-// components/AuthProvider.jsx
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { syncCart, initializeCart, clearCartDB,addToCartDB  } from '../store/cartSlice';
@@ -8,12 +7,12 @@ const AuthProvider = ({ children }) => {
   const { isAuthenticated, token } = useSelector(state => state.auth);
   const cart = useSelector(state => state.cart);
 
-  // Инициализация корзины при загрузке
+
   useEffect(() => {
     dispatch(initializeCart());
   }, [dispatch]);
 
-  // Синхронизация при изменении статуса аутентификации
+
   useEffect(() => {
     const handleAuthChange = async () => {
       if (isAuthenticated) {
@@ -22,7 +21,6 @@ const AuthProvider = ({ children }) => {
           
           const localCart = JSON.parse(localStorage.getItem('cart'));
           if (localCart?.items?.length > 0) {
-            // Добавляем проверку существования товаров перед добавлением
             const validItems = await Promise.all(
               localCart.items.map(async item => {
                 try {
@@ -35,14 +33,12 @@ const AuthProvider = ({ children }) => {
               })
             );
             
-            // Удаляем только успешно добавленные товары
             if (validItems.every(Boolean)) {
               localStorage.removeItem('cart');
             }
           }
         } catch (error) {
           console.error('Auth change sync error:', error);
-          // Сохраняем локальную корзину при ошибке синхронизации
           localStorage.setItem('cart', JSON.stringify(cart));
         }
       } else {
@@ -51,8 +47,6 @@ const AuthProvider = ({ children }) => {
     };
     handleAuthChange();
   }, [isAuthenticated, token, dispatch]);
-
-  // Автосохранение при изменении корзины
   useEffect(() => {
     let debounceTimer;
     
@@ -76,7 +70,6 @@ const AuthProvider = ({ children }) => {
     };
   }, [cart.items, isAuthenticated, dispatch]);
 
-  // Сохранение перед закрытием
   useEffect(() => {
     const handleBeforeUnload = async () => {
       if (isAuthenticated) {

@@ -1,5 +1,3 @@
-// src/App.jsx
-
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from './routes/Root/Root.jsx'; 
 import ErrorPage404 from './routes/ErrorPage404/ErrorPage404.jsx';

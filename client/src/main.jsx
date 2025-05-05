@@ -1,4 +1,3 @@
-// src/main.jsx
 import AuthProvider from './components/AuthProvider';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';

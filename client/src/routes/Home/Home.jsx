@@ -1,5 +1,3 @@
-// src/routes/Home/Home.jsx
-
 import { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -37,18 +35,17 @@ const HomePage = () => {
     const navigate = useNavigate();
     const catalogRef = useRef(null);
 
-    // Получаем данные из Redux
+
     const { isAuthenticated } = useSelector(state => state.auth);
     const favorites = useSelector(state => state.favorites.items);
     const products = useSelector(state => state.products.items);
     const productsStatus = useSelector(state => state.products.status);
 
-    // Функция для прокрутки к каталогу
+
     const handleCatalogClick = () => {
         catalogRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
-    // Проверка авторизации
     const checkAuth = () => {
         if (!isAuthenticated) {
             alert('Пожалуйста, авторизуйтесь!');
@@ -70,7 +67,6 @@ const HomePage = () => {
         dispatch(addToCartDB(product))
             .unwrap()
             .then(() => {
-                // Принудительная синхронизация после успешного добавления
                 dispatch(syncCart());
             })
             .catch(error => {
@@ -81,7 +77,7 @@ const HomePage = () => {
 
     const handleToggleFavorite = (product) => {
         if (!checkAuth()) return;
-        dispatch(toggleFavorite(product.id)); // Передаем только ID продукта
+        dispatch(toggleFavorite(product.id)); 
     };
     useEffect(() => {
         if (productsStatus === 'idle') {
@@ -91,7 +87,6 @@ const HomePage = () => {
 
     return (
         <div className={styles.container}>
-            {/* Header */}
             <header className={styles.header}>
                 <div className={styles.navContainer}>
                     <div className={styles.nazv}>
@@ -111,7 +106,6 @@ const HomePage = () => {
                 </div>
             </header>
     
-            {/* Hero Section */}
             <section className={styles.heroSection}>
                 <div className={styles.heroContent}>
                     <h2 className={styles.heroTitle}>Интернет-магазин чая</h2>
@@ -127,8 +121,7 @@ const HomePage = () => {
                     </button>
                 </div>
             </section>
-    
-            {/* Tea Types */}
+
             <section className={styles.teaTypesSection}>
                 <h3 className={styles.sectionTitle}>Виды чая</h3>
                 <div className={styles.teaTypesGrid}>
@@ -144,8 +137,7 @@ const HomePage = () => {
                     ))}
                 </div>
             </section>
-    
-            {/* Catalog */}
+
             <section className={styles.catalogSection} ref={catalogRef}>
                 <h3 className={styles.sectionTitle}>Каталог</h3>
                 <div className={styles.productsGrid}>
@@ -187,8 +179,7 @@ const HomePage = () => {
                     })}
                 </div>
             </section>
-    
-            {/* Info Blocks */}
+
             <section className={styles.infoSection}>
                 <div>
                 <div className={styles.infoCard}>

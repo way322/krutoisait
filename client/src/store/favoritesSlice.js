@@ -1,9 +1,7 @@
-// src/store/favoritesSlice.js
-
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Получение избранного
+
 export const fetchFavorites = createAsyncThunk(
   'favorites/fetch',
   async (_, { getState }) => {
@@ -12,7 +10,7 @@ export const fetchFavorites = createAsyncThunk(
       'http://localhost:5000/api/favorites',
       {
         headers: {
-          Authorization: `Bearer ${auth.token}` // Используем токен из хранилища
+          Authorization: `Bearer ${auth.token}` 
         }
       }
     );
@@ -20,8 +18,6 @@ export const fetchFavorites = createAsyncThunk(
   }
 );
 
-// Переключение избранного
-// Изменяем получение токена
 export const toggleFavorite = createAsyncThunk(
   'favorites/toggle',
   async (productId, { getState }) => {
@@ -31,7 +27,7 @@ export const toggleFavorite = createAsyncThunk(
       { productId },
       {
         headers: {
-          Authorization: `Bearer ${auth.token}` // Исправлено с user.token на auth.token
+          Authorization: `Bearer ${auth.token}` 
         }
       }
     );

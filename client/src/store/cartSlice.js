@@ -1,10 +1,9 @@
-// src/store/cartSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const decrementQuantity = createAsyncThunk(
   'cart/decrement',
-  async (productId, { getState, rejectWithValue }) => { // Добавлен rejectWithValue
+  async (productId, { getState, rejectWithValue }) => { 
     const { auth } = getState();
     try {
       const response = await axios.patch(
@@ -30,7 +29,6 @@ export const syncCart = createAsyncThunk(
       headers: { Authorization: `Bearer ${auth.token}` }
     });
 
-    // Преобразуем данные сервера в нужный формат
     return response.data.map(item => ({
       id: item.product_id,
       title: item.title,
@@ -51,7 +49,6 @@ export const addToCartDB = createAsyncThunk(
       { headers: { Authorization: `Bearer ${auth.token}` } }
     );
 
-    // Возвращаем обновленные данные с сервера
     return {
       ...product,
       quantity: response.data.newQuantity

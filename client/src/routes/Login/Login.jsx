@@ -1,4 +1,3 @@
-// src/routes/Login/Login.jsx
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -34,9 +33,8 @@ const Login = () => {
         phone: cleanedPhone,
         password: formData.password
       });
-      // Используем очищенный номер в запросе
       const response = await axios.post('http://localhost:5000/api/auth/login', {
-        phone: formData.phone, // <- Исправлено здесь
+        phone: formData.phone, 
         password: formData.password
       });
   
