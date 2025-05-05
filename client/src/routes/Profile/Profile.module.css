@@ -1,0 +1,203 @@
+body {margin: 0px;}
+.navContainer {
+    background-color: #889E7D;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+.header {
+    width: 100%;
+}
+.title {
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 21px;
+}
+
+.nazv {
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+}
+
+.iconsContainer {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.cartIcon {
+    width: 55px;
+    height: 55px;
+}
+.profileIcon {
+    width: 55px;
+    height: 55px;
+}
+
+.mainContent {
+    background-color: #5A6352;
+    height: 100%;
+    min-height: 100vh;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ordersContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.orderCard {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: #E1D0BF;
+    border-radius: 20px;
+    width: 500px;
+    align-items: center;
+}
+
+.orderProducts {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.productImage {
+    width: 200px;
+    height: 200px;
+}
+
+.orderDetails{
+    width: 100%;
+}
+
+.orderNumber {
+    font-size: 30px;
+    margin: 10px;
+}
+.orderTimer {
+    font-size: 25px;
+    margin: 10px;
+}
+
+.orderHeader{
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.infoLine {
+    font-size: 20px;
+}
+
+.orderInfo {
+    margin-left: 20px;
+}
+
+.productTitle {
+    font-size: 20px;
+}
+
+.productPrice {
+    color: #889E7D;
+    font-size: 20px;
+}
+
+.productItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sectionTitle {
+    color: white;
+    font-size: 30px;
+}
+
+
+.section2 {
+    margin-top: 40px;
+    background-color: #373f38;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.favoritesGrid{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.favoriteCard {
+    margin-right: 40px;
+    margin-left: 40px;
+    margin-bottom: 30px;
+}
+
+.favoriteInfo{ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.favoriteActions {
+    display: flex;
+    justify-content: space-between
+}
+.cartButton {
+    background:none;
+    border:none;
+}
+
+.favoriteTitle {
+    color: white;
+    font-size: 20px;
+    margin: 10px;
+}
+.favoritePrice{ 
+    color: white;
+    font-size: 20px;
+    margin: 10px;
+}
+
+
+.section3 {
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infoItem {
+    color: white;
+    font-size: 20px;
+}
+
+.logoutButton{
+    background-color: #E1D0BF;
+    border: 0px;
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 15px;
+}

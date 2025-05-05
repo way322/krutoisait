@@ -1,0 +1,217 @@
+body {margin: 0px;}
+.navContainer {
+    background-color: #889E7D;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+.header {
+    width: 100%;
+}
+.title {
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 21px;
+}
+
+.nazv {
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+}
+
+.iconsContainer {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.cartIcon {
+    width: 55px;
+    height: 55px;
+}
+.profileIcon {
+    width: 55px;
+    height: 55px;
+}
+
+
+
+
+
+
+.heroSection {
+    background-image: url('../../img/fon.png'); 
+    height: 866px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+}
+
+.heroContent{
+    background-color: rgb(217, 217, 217, 75%);
+    width: 550px;
+    height: 586px;
+    margin-left: 60px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.heroTitle {
+    font-size: 45px;
+}
+.heroText {
+    width: 450px;
+    font-size: 27px;
+    text-align: center;
+    color: #2E2E2E;
+}
+
+.catalogButton {
+    width: 300px;
+    height: 80px;
+    margin-top: 20px;
+    background-color: #65745D;
+    border: 0px;
+    border-radius: 40px;
+    color: white;
+    font-size: 30px;
+}
+
+.teaTypesSection {
+    margin-top: 100px;
+    background-color: #E1D0BF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.teaTypesGrid {
+    display: flex;
+    width: 1800px;
+    justify-content: space-between;
+}
+
+.teaTypeCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.teaTypeName {
+    font-size: 30px;
+    color: #35312b;
+    
+}
+
+.sectionTitle {
+    font-size: 40px;
+    text-decoration: underline;
+
+}
+
+.productsGrid{
+    display: flex;
+    flex-wrap: wrap;
+    width: 1400px;
+    justify-content: space-between;
+    align-content: space-around;
+    height: 1400px;
+}    
+
+.catalogSection {
+    background-color: #E1D0BF;
+    width: 1600px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    height: 1300px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.productCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+.productTitle {
+    font-size: 30px;
+    color: #3d3b38;
+}
+.productPrice {
+    color: #889E7D;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+.productActions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.productInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cartButton {
+    background-color: transparent;
+    border: 0px;
+}
+
+.favoriteButton {
+    background-color: transparent;
+    border: 0px;
+
+}
+
+
+.infoSection {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 150px;
+    background-color: #889E7D;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.infoCard {
+    display: flex;    
+    align-items: center;
+}
+
+.infoTitle { 
+    color: white;
+    font-size: 26px;
+}
+
+.infoIcon { 
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.infoText {
+    color: white;
+    font-size: 18px;
+    width: 320px;
+}
